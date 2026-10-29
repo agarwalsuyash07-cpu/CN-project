@@ -1,0 +1,9 @@
+========================================================================
+EVIDENCE 1 — SMTP command-reply exchange on TCP 2525 (tshark on lo0)
+========================================================================
+tshark not found (PATH or /Applications/Wireshark.app/Contents/MacOS/tshark).
+Install Wireshark: https://www.wireshark.org/download.html  (or: brew install --cask wireshark)
+Capturing on lo0 needs read access to /dev/bpf*. Fix it once, then rerun this script:
+  A) Wireshark .dmg -> run "Install ChmodBPF.pkg" -> log out and back in, or
+  B) sudo dseditgroup -o edit -a "$USER" -t user access_bpf   (group made by ChmodBPF)
+     sudo chgrp access_bpf /dev/bpf* && sudo chmod g+rw /dev/bpf*   (lasts until reboot)

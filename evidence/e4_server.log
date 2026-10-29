@@ -1,0 +1,206 @@
+18:03:48 [HTTP] PUT /ref -> id=f22827f0ef2249419b42fee482827b6f name=midsize.pdf 5242880 bytes
+18:03:48 [HTTP] 127.0.0.1 "PUT /ref HTTP/1.0" 201 -
+18:03:48 [SMTP] S: 220 localmail SMTP ready
+18:03:48 [SMTP] C: EHLO localmail-client
+18:03:48 [SMTP] S: 250-localmail Hello localmail-client
+18:03:48 [SMTP] S: 250-SIZE 26214400
+18:03:48 [SMTP] S: 250 OK
+18:03:48 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:48 [SMTP] S: 250 OK
+18:03:48 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:48 [SMTP] S: 250 OK
+18:03:48 [SMTP] C: DATA
+18:03:48 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:48 [SMTP] C: <981 bytes of message data>
+18:03:48 [SMTP] S: 250 Message accepted
+18:03:48 [SMTP] C: QUIT
+18:03:48 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <2870783 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <2870724 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <2870724 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <2870725 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <2870724 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <2870724 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <2870724 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <1435833 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [SMTP] S: 220 localmail SMTP ready
+18:03:49 [SMTP] C: EHLO localmail-client
+18:03:49 [SMTP] S: 250-localmail Hello localmail-client
+18:03:49 [SMTP] S: 250-SIZE 26214400
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: RCPT TO:<kapish@localmail>
+18:03:49 [SMTP] S: 250 OK
+18:03:49 [SMTP] C: DATA
+18:03:49 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:03:49 [SMTP] C: <701471 bytes of message data>
+18:03:49 [SMTP] S: 250 Message accepted
+18:03:49 [SMTP] C: QUIT
+18:03:49 [SMTP] S: 221 Bye
+18:03:49 [POP3] S: +OK POP3 ready
+18:03:49 [POP3] C: USER kapish
+18:03:49 [POP3] S: +OK user accepted
+18:03:49 [POP3] C: PASS ****
+18:03:49 [POP3] S: +OK logged in
+18:03:49 [POP3] C: STAT
+18:03:49 [POP3] S: +OK 10 22234513
+18:03:49 [POP3] C: LIST
+18:03:49 [POP3] S: +OK 10 messages (22234513 octets)
+18:03:49 [POP3] S: 1 1091
+18:03:49 [POP3] S: 2 2870893
+18:03:49 [POP3] S: 3 2870834
+18:03:49 [POP3] S: 4 2870834
+18:03:49 [POP3] S: 5 2870835
+18:03:49 [POP3] S: 6 2870834
+18:03:49 [POP3] S: 7 2870834
+18:03:49 [POP3] S: 8 2870834
+18:03:49 [POP3] S: 9 1435943
+18:03:49 [POP3] S: 10 701581
+18:03:49 [POP3] S: .
+18:03:49 [POP3] C: RETR 1
+18:03:49 [POP3] S: +OK 1091 octets
+18:03:49 [POP3] S: <1091 octets of message content>.
+18:03:49 [POP3] C: RETR 2
+18:03:49 [POP3] S: +OK 2870893 octets
+18:03:49 [POP3] S: <2870893 octets of message content>.
+18:03:49 [POP3] C: RETR 3
+18:03:49 [POP3] S: +OK 2870834 octets
+18:03:49 [POP3] S: <2870834 octets of message content>.
+18:03:49 [POP3] C: RETR 4
+18:03:49 [POP3] S: +OK 2870834 octets
+18:03:49 [POP3] S: <2870834 octets of message content>.
+18:03:49 [POP3] C: RETR 5
+18:03:49 [POP3] S: +OK 2870835 octets
+18:03:49 [POP3] S: <2870835 octets of message content>.
+18:03:49 [POP3] C: RETR 6
+18:03:49 [POP3] S: +OK 2870834 octets
+18:03:49 [POP3] S: <2870834 octets of message content>.
+18:03:49 [POP3] C: RETR 7
+18:03:49 [POP3] S: +OK 2870834 octets
+18:03:49 [POP3] S: <2870834 octets of message content>.
+18:03:49 [POP3] C: RETR 8
+18:03:49 [POP3] S: +OK 2870834 octets
+18:03:49 [POP3] S: <2870834 octets of message content>.
+18:03:49 [POP3] C: RETR 9
+18:03:49 [POP3] S: +OK 1435943 octets
+18:03:49 [POP3] S: <1435943 octets of message content>.
+18:03:49 [POP3] C: RETR 10
+18:03:49 [POP3] S: +OK 701581 octets
+18:03:49 [POP3] S: <701581 octets of message content>.
+18:03:49 [HTTP] 127.0.0.1 "GET /ref/f22827f0ef2249419b42fee482827b6f HTTP/1.0" 200 -
+18:03:49 [HTTP] GET /ref/f22827f0ef2249419b42fee482827b6f -> 200 5242880 bytes
+18:03:49 [POP3] C: QUIT
+18:03:49 [POP3] S: +OK Bye

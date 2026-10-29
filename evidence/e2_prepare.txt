@@ -1,0 +1,27 @@
+========================================================================
+EVIDENCE 2 — POP3 session over netcat (port 1110)
+========================================================================
+servers running (pid 81244), log: evidence/e2_server.log
+yashraj has 1 message waiting (367 bytes), so RETR 1 fits on one screen.
+
+In a NEW terminal type (one command per line, wait for each reply):
+
+    nc -c localhost 1110
+    USER yashraj
+    PASS yashraj123
+    STAT
+    LIST
+    RETR 1
+    DELE 1
+    QUIT
+
+Then prove DELE was committed at QUIT - reconnect and expect "+OK 0 0":
+
+    nc -c localhost 1110
+    USER yashraj
+    PASS yashraj123
+    STAT
+    QUIT
+
+(-c sends CRLF like a real client; the server also accepts plain "nc" with bare LF.)
+Stop the servers afterwards: scripts/evidence/stop_servers.sh

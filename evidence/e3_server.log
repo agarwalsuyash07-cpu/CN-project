@@ -1,0 +1,34 @@
+18:09:57 [BOOT] SMTP tcp/2525  POP3 tcp/1110  refstore http://127.0.0.1:8000/ref  bound on 127.0.0.1
+18:09:57 [BOOT] domain=localmail users=kapish,suyash,yashraj data=/Users/sle1f0/Downloads/CODES/CN/data
+18:09:57 [BOOT] Ctrl-C to stop
+18:09:57 [SMTP] S: 220 localmail SMTP ready
+18:09:57 [SMTP] C: EHLO localmail-client
+18:09:57 [SMTP] S: 250-localmail Hello localmail-client
+18:09:57 [SMTP] S: 250-SIZE 26214400
+18:09:57 [SMTP] S: 250 OK
+18:09:57 [SMTP] C: MAIL FROM:<suyash@localmail>
+18:09:57 [SMTP] S: 250 OK
+18:09:57 [SMTP] C: RCPT TO:<kapish@localmail>
+18:09:57 [SMTP] S: 250 OK
+18:09:57 [SMTP] C: DATA
+18:09:57 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+18:09:57 [SMTP] C: <4254 bytes of message data>
+18:09:57 [SMTP] S: 250 Message accepted
+18:09:57 [SMTP] C: QUIT
+18:09:57 [SMTP] S: 221 Bye
+18:09:58 [POP3] S: +OK POP3 ready
+18:09:58 [POP3] C: USER kapish
+18:09:58 [POP3] S: +OK user accepted
+18:09:58 [POP3] C: PASS ****
+18:09:58 [POP3] S: +OK logged in
+18:09:58 [POP3] C: STAT
+18:09:58 [POP3] S: +OK 1 4364
+18:09:58 [POP3] C: LIST
+18:09:58 [POP3] S: +OK 1 messages (4364 octets)
+18:09:58 [POP3] S: 1 4364
+18:09:58 [POP3] S: .
+18:09:58 [POP3] C: RETR 1
+18:09:58 [POP3] S: +OK 4364 octets
+18:09:58 [POP3] S: <4364 octets of message content>.
+18:09:58 [POP3] C: QUIT
+18:09:58 [POP3] S: +OK Bye

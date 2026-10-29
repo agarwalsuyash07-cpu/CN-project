@@ -1,0 +1,41 @@
+========================================================================
+EVIDENCE 4 — 15 MB file fragmented, reassembled, SHA-256 verified
+========================================================================
+
+== servers up: SMTP tcp/2525  POP3 tcp/1110  refstore http://127.0.0.1:8000/ref ==
+
+== sending 3 files from suyash to kapish ==
+
+18:03:48 [CLIENT] रिपोर्ट_é.txt 500.0 KB -> tier: inline
+18:03:48 [CLIENT] midsize.pdf 5.0 MB -> tier: reference (ref id f22827f0ef2249419b42fee482827b6f)
+18:03:48 [CLIENT] sent reference mail for midsize.pdf (no attachment bytes in the mail)
+18:03:48 [CLIENT] big.bin 15.0 MB -> tier: fragment (8 fragments of 2.0 MB)
+18:03:49 [CLIENT] sent fragment 1/8 (2.0 MB)
+18:03:49 [CLIENT] sent fragment 2/8 (2.0 MB)
+18:03:49 [CLIENT] sent fragment 3/8 (2.0 MB)
+18:03:49 [CLIENT] sent fragment 4/8 (2.0 MB)
+18:03:49 [CLIENT] sent fragment 5/8 (2.0 MB)
+18:03:49 [CLIENT] sent fragment 6/8 (2.0 MB)
+18:03:49 [CLIENT] sent fragment 7/8 (2.0 MB)
+18:03:49 [CLIENT] sent fragment 8/8 (1.0 MB)
+18:03:49 [CLIENT] sent inline mail with 1 attachment(s)
+
+== fetching as kapish over POP3 ==
+
+18:03:49 [CLIENT] POP3 STAT: 10 message(s), 22234513 bytes
+18:03:49 [CLIENT] downloaded reference midsize.pdf 5.0 MB from the store (ref id f22827f0ef2249419b42fee482827b6f)
+18:03:49 [CLIENT] SHA-256 match: 925ccd943ce7fcc9a8a3618690bf45cf9ea07f1f0b3043ff8d7c1d1c09172dc1 -> saved /Users/sle1f0/Downloads/CODES/CN/downloads/kapish/midsize.pdf
+18:03:49 [CLIENT] रिपोर्ट_é.txt 500.0 KB -> tier: inline, saved /Users/sle1f0/Downloads/CODES/CN/downloads/kapish/रिपोर्ट_é.txt
+18:03:49 [CLIENT] received 8/8 fragments for 06f53006, reassembled 15.0 MB
+18:03:49 [CLIENT] SHA-256 match: 46dea6fe53b31ac8f74703c9652fe2ab762e42cd25ace66db2c4d9edc2c6a674 -> saved /Users/sle1f0/Downloads/CODES/CN/downloads/kapish/big.bin
+
+================================================================================================================
+FILE                       SIZE  TIER       FRAGMENTS  SHA-256 MATCH  SAVED PATH
+================================================================================================================
+रिपोर्ट_é.txt          500.0 KB  inline     -          yes            kapish/रिपोर्ट_é.txt
+midsize.pdf              5.0 MB  reference  -          yes            kapish/midsize.pdf
+big.bin                 15.0 MB  fragment   8          yes            kapish/big.bin
+================================================================================================================
+10 physical mails collapsed to 3 logical inbox message(s)
+downloads: /Users/sle1f0/Downloads/CODES/CN/downloads/kapish
+

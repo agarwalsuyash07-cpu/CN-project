@@ -1,0 +1,19 @@
+========================================================================
+EVIDENCE 5 — unittest suite (python3 -m unittest discover -v)
+========================================================================
+MODULE                        TESTS     OK
+------------------------------------------
+test_concurrency                  2      2
+test_gui                          2      2
+test_mime                        11     11
+test_pop3                        20     20
+test_reference_clients            7      7
+test_refstore                     6      6
+test_smtp                        15     15
+test_tiering                     26     26
+------------------------------------------
+total                            89     89
+
+Ran 89 tests in 36.083s
+OK
+full output: evidence/e5_tests.txt

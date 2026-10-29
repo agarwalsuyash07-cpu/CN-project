@@ -1,0 +1,40 @@
+# SMTP connection handler — localmail/server/smtp_server.py, lines 64-119 (excerpt)
+def handle_client(conn, peer, cfg, store):
+    reader = LineReader(conn)
+    send(conn, "220 %s SMTP ready" % cfg["domain"], TAG)
+    state, sender, rcpts = "INIT", None, []
+    for line in recv_lines(reader):
+        log_line(TAG, "C", line)
+        cmd, _, arg = line.partition(" ")
+        cmd = cmd.strip().upper()
+        # ... lines 72-95: EHLO/HELO, MAIL FROM, RCPT TO (503 / 501 / 550 checks) ...
+        elif cmd == "DATA":
+            if state != "RCPT":
+                send(conn, "503 Bad sequence of commands", TAG)
+                continue
+            send(conn, "354 End data with <CRLF>.<CRLF>", TAG)
+            data, oversize = read_until_dot(reader, cfg["hard_max"])
+            log_line(TAG, "C", "<%d bytes of message data>" % len(data))
+            if oversize:
+                send(conn, "552 Message size exceeds limit", TAG)
+            else:
+                data = add_received(data, sender, rcpts, peer, cfg["domain"])
+                for rcpt in rcpts:
+                    store_with_lock(store, rcpt.partition("@")[0], data)
+                send(conn, "250 Message accepted", TAG)
+            sender, rcpts, state = None, [], "READY"
+        # ... lines 111-116: RSET, NOOP ...
+        elif cmd == "QUIT":
+            send(conn, "221 Bye", TAG)
+            break
+
+# Tier selection — localmail/client/tiering.py, lines 23-31 (complete)
+def choose_tier(size, cfg):
+    # tier is decided on RAW bytes, before base64
+    if size <= cfg["inline_max"]:
+        return "inline"
+    if size <= cfg["reference_max"]:
+        return "reference"
+    if size <= cfg["hard_max"]:
+        return "fragment"
+    return "reject"

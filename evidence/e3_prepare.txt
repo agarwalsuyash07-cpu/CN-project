@@ -1,0 +1,17 @@
+========================================================================
+EVIDENCE 3 — GUI inbox with an inline non-ASCII attachment
+========================================================================
+
+FILE                               SIZE  TIER       DETAIL
+रिपोर्ट_é.txt                    2.4 KB  inline     
+
+servers running (pid 84355), log: evidence/e3_server.log
+kapish has 1 message waiting: रिपोर्ट_é.txt (2436 bytes, inline)
+
+The GUI opens now, already logged in as kapish. Then:
+  1. click the mail "Evidence 3 — inline non-ASCII attachment" (TIER inline, ATT 1)
+  2. click रिपोर्ट_é.txt in the Attachments list
+  3. click Open -> the file opens in TextEdit
+  4. click Save -> choose a folder -> the status bar shows "saved to ..."
+  5. screenshot the GUI and TextEdit side by side
+Close the GUI when done; stop the servers with scripts/evidence/stop_servers.sh

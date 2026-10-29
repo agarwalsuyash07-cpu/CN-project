@@ -1,0 +1,17 @@
+{
+  "host": "127.0.0.1",
+  "smtp_port": 2525,
+  "pop3_port": 1110,
+  "ref_port": 8000,
+  "domain": "localmail",
+  "data_dir": "data",
+  "users": {
+    "suyash": "suyash123",
+    "kapish": "kapish123",
+    "yashraj": "yashraj123"
+  },
+  "inline_max": 1048576,
+  "reference_max": 10485760,
+  "hard_max": 26214400,
+  "chunk_size": 2097152
+}
