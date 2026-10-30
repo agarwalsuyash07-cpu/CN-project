@@ -1,0 +1,78 @@
+
+===================================================================
+Follow: tcp,ascii
+Filter: tcp.stream eq 0
+Node 0: 127.0.0.1:63703
+Node 1: 127.0.0.1:2525
+	26
+220 localmail SMTP ready
+
+23
+EHLO localmail-client
+
+	38
+250-localmail Hello localmail-client
+
+	19
+250-SIZE 26214400
+
+	8
+250 OK
+
+30
+MAIL FROM:<suyash@localmail>
+
+	8
+250 OK
+
+28
+RCPT TO:<kapish@localmail>
+
+	8
+250 OK
+
+6
+DATA
+
+	33
+354 End data with <CRLF>.<CRLF>
+
+834
+Content-Type: multipart/mixed;
+ boundary="LocalMail-2c79e3a939b746da8f7a93a4b6d37250"
+MIME-Version: 1.0
+From: suyash@localmail
+To: kapish@localmail
+Subject: Evidence 1 - SMTP on port 2525
+Date: Fri, 30 Oct 2026 21:29:50 +0530
+Message-ID: <179337599078.12044.13520172646902443763@localmail>
+X-Transfer-Mode: inline
+
+--LocalMail-2c79e3a939b746da8f7a93a4b6d37250
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+Q2FwdHVyZWQgb24gbG9vcGJhY2sgd2l0aCB0c2hhcmsu
+
+--LocalMail-2c79e3a939b746da8f7a93a4b6d37250
+Content-Type: application/octet-stream
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="hello.txt"
+
+SGVsbG8gS2FwaXNoLA0KdGhpcyB0aW55IGZpbGUgdHJhdmVscyBpbmxpbmUuDQo=
+
+--LocalMail-2c79e3a939b746da8f7a93a4b6d37250--
+.
+
+	22
+250 Message accepted
+
+6
+QUIT
+
+	9
+221 Bye
+
+===================================================================

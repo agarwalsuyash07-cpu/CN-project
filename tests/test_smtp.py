@@ -173,5 +173,21 @@ class TestStorage(ServerCase):
         self.assertEqual(self.store.index_count("yashraj"), 1)
 
 
+class TestPortConflict(ServerCase):
+    # on Windows SO_REUSEADDR lets a second listener steal a busy port without an error
+    def test_second_server_on_a_busy_port_fails_to_start(self):
+        from localmail.server.pop3_server import POP3Server
+        from localmail.server.ref_store import RefStoreServer
+        from localmail.server.smtp_server import SMTPServer
+        busy = dict(self.cfg, smtp_port=self.smtp_port, pop3_port=self.pop3_port,
+                    ref_port=self.ref_port)
+        for server in (SMTPServer(busy, self.store), POP3Server(busy, self.store),
+                       RefStoreServer(busy)):
+            self.addCleanup(server.stop)   # also closes the socket a failed bind leaves open
+            with self.subTest(server=type(server).__name__):
+                with self.assertRaises(OSError):
+                    server.start()
+
+
 if __name__ == "__main__":
     unittest.main()

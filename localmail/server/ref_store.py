@@ -4,7 +4,7 @@ import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from uuid import uuid4
 
-from ..common.lineio import log
+from ..common.lineio import REUSE_ADDR, log
 from ..config import data_dir
 
 TAG = "HTTP"
@@ -73,6 +73,10 @@ class RefHandler(BaseHTTPRequestHandler):
         log.info("[%s] GET /ref/%s -> 200 %d bytes", TAG, rid, len(data))
 
 
+class _HTTPServer(ThreadingHTTPServer):
+    allow_reuse_address = REUSE_ADDR
+
+
 class RefStoreServer:
     def __init__(self, cfg):
         self.cfg = cfg
@@ -80,7 +84,7 @@ class RefStoreServer:
         self.port = cfg["ref_port"]
 
     def start(self):
-        self.httpd = ThreadingHTTPServer((self.cfg["host"], self.cfg["ref_port"]), RefHandler)
+        self.httpd = _HTTPServer((self.cfg["host"], self.cfg["ref_port"]), RefHandler)
         self.httpd.cfg = self.cfg
         self.port = self.httpd.server_address[1]
         threading.Thread(target=self.httpd.serve_forever, daemon=True).start()

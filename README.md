@@ -204,9 +204,11 @@ as much as the mail ports. Check with `nc -vz 192.168.1.10 8000`.
 
 ### Platform notes
 
-Tested on macOS (Apple Silicon) and Windows. The only platform-specific code is the mailbox
+Tested on macOS (Apple Silicon), Ubuntu 24.04 and Windows 11. The only platform-specific code is the mailbox
 lock file (`fcntl.flock` on POSIX, `msvcrt.locking` on Windows) and the GUI **Open** button
-(`open` vs `os.startfile`). Both pick the right branch automatically.
+(`open` vs `os.startfile`). Both pick the right branch automatically. Listeners set
+`SO_REUSEADDR` everywhere except Windows, where it would let a second server bind a busy port
+silently; a second `run_server` on Windows now fails with `WinError 10048` like it does elsewhere.
 
 ---
 
@@ -215,6 +217,10 @@ lock file (`fcntl.flock` on POSIX, `msvcrt.locking` on Windows) and the GUI **Op
 The servers accept bare-LF line endings as well as CRLF, so plain `nc` works by hand.
 Verified on macOS: `nc localhost 1110` (bare LF) and `nc -c localhost 1110` (`-c` sends CRLF,
 like a real mail client) give identical replies. The evidence scripts use `nc -c`.
+
+Windows ships without `nc`. Use `python scripts/nc.py localhost 1110` instead: a 30-line
+stdlib stand-in that sends each typed line with CRLF (like `nc -c`) and prints replies as they
+arrive. Every `nc` session below works the same way through it.
 
 ### SMTP on 2525
 
@@ -300,19 +306,21 @@ EOF
 python3 -m unittest discover -v
 ```
 
-89 tests. `smtplib` and `poplib` appear **only** in `tests/test_reference_clients.py`, as
+102 tests. `smtplib` and `poplib` appear **only** in `tests/test_reference_clients.py`, as
 stdlib reference clients proving our servers are RFC-compliant. Coverage:
 
 | Module | What it locks down |
 |---|---|
-| `test_smtp.py` | exact 220/250/354/221/550/552/503/500/501 strings, EHLO multiline, RSET/NOOP, `rcpts` reset after DATA, dot-stuffing, Maildir layout, index row, `Received:` header, one store call per recipient |
+| `test_smtp.py` | exact 220/250/354/221/550/552/503/500/501 strings, EHLO multiline, RSET/NOOP, `rcpts` reset after DATA, dot-stuffing, Maildir layout, index row, `Received:` header, one store call per recipient, a second server on a busy port fails to start |
 | `test_pop3.py` | `+OK POP3 ready`, `+OK logged in`, STAT format, `PASS ****` in the log and no password anywhere in it, LIST/RETR/UIDL terminators, dot-stuffed RETR, DELE-commit-at-QUIT, dropped connection deletes nothing, one session per mailbox |
 | `test_mime.py` | MIME-Version, multipart/mixed, unique boundary, text/plain first, every attachment octet-stream + base64 + Content-Disposition, RFC 2231 non-ASCII filenames, CRLF-only wire format |
 | `test_tiering.py` | tier boundaries at exactly 1 MB, 1 MB+1, 10 MB, 10 MB+1, 25 MB, 25 MB+1; 2 MB split; reference download + hash verify; out-of-order, missing and corrupted fragments; the `--delete` hold policy |
 | `test_refstore.py` | PUT/GET round trip, distinct ids, 404 on missing and on malformed ids |
+| `test_lineio.py` | non-ASCII output survives a redirected Windows console (cp1252 → UTF-8) |
+| `test_nc.py` | `scripts/nc.py` drives a POP3 session and returns when input ends |
 | `test_concurrency.py` | 20 threads delivering into one mailbox: every message intact, index count exact, `tmp/` left clean |
 | `test_reference_clients.py` | smtplib and poplib drive our servers end to end |
-| `test_gui.py` | inbox date column shortened to fit, unparseable dates shown as-is |
+| `test_gui.py` | inbox date column shortened to fit, unparseable dates shown as-is; Open hands the saved file to the OS opener (`startfile` / `open` / `xdg-open`), Save copies it to the chosen path, a cancelled dialog writes nothing, a message with no saved file opens nothing |
 
 ---
 

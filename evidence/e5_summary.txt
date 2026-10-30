@@ -4,16 +4,18 @@ EVIDENCE 5 — unittest suite (python3 -m unittest discover -v)
 MODULE                        TESTS     OK
 ------------------------------------------
 test_concurrency                  2      2
-test_gui                          2      2
-test_mime                        11     11
+test_gui                          9      9
+test_lineio                       2      2
+test_mime                        12     12
+test_nc                           2      2
 test_pop3                        20     20
 test_reference_clients            7      7
 test_refstore                     6      6
-test_smtp                        15     15
+test_smtp                        16     16
 test_tiering                     26     26
 ------------------------------------------
-total                            89     89
+total                           102    102
 
-Ran 89 tests in 36.083s
+Ran 102 tests in 39.002s
 OK
 full output: evidence/e5_tests.txt

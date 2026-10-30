@@ -5,6 +5,10 @@ Every screenshot is real output from the scripts below. Each script starts from 
 `evidence/`. Take the terminal shots in a wide window (about 200×55). Stop any servers left
 running with `scripts/evidence/stop_servers.sh`.
 
+**Windows:** run the scripts from Git Bash (`bash scripts/evidence/e2_pop3_prepare.sh`). They
+use `netstat`/`taskkill` instead of `lsof`/`kill`, pick `python` when `python3` is only the
+Microsoft Store stub, and E2 prints `python scripts/nc.py` in place of `nc -c`.
+
 Report material, already generated (`scripts/evidence/make_report_material.sh` regenerates it):
 `evidence/versions.txt`, `evidence/section_6_3_extracts.txt`, `evidence/checklist.md`.
 
@@ -16,6 +20,9 @@ Report material, already generated (`scripts/evidence/make_report_material.sh` r
 `brew install --cask wireshark`) and run **Install ChmodBPF.pkg** from the .dmg, then log out
 and back in. Without ChmodBPF, capturing on `lo0` fails because `/dev/bpf*` is root-only. The
 script prints this fix if it hits that error.
+On Windows, install Wireshark and tick **Install Npcap** with **Support loopback traffic**; the
+script captures on `\Device\NPF_Loopback`. On Linux it captures on `lo`. The capture stops
+itself after 10 s.
 
 **Run:** `scripts/evidence/e1_smtp_wireshark.sh`
 It captures `tcp port 2525` on `lo0` into `evidence/e1_smtp.pcapng` while the CLI sends ONE
@@ -57,7 +64,8 @@ QUIT
 
 Then reconnect to show the mailbox is empty: `nc -c localhost 1110`, `USER yashraj`,
 `PASS yashraj123`, `STAT` → `+OK 0 0`, `QUIT`.
-(`-c` sends CRLF like a mail client. Plain `nc`, which sends bare LF, gets the same replies.)
+(`-c` sends CRLF like a mail client. Plain `nc`, which sends bare LF, gets the same replies.
+On Windows type `python scripts/nc.py localhost 1110` instead of `nc -c localhost 1110`.)
 
 **Screenshot must show:** `+OK POP3 ready`, `+OK logged in`, `+OK 1 367`, the LIST block ending
 in `.`, `+OK 367 octets` with the readable message ending in `.`,
@@ -111,8 +119,8 @@ retrieval and verified by SHA-256 (client log and results table).*
 It runs `python3 -m unittest discover -v`. The full output is saved to `evidence/e5_tests.txt`;
 the screen shows tests per module and the final verdict.
 
-**Screenshot must show:** the per-module table (8 modules, 89 tests) and `Ran 89 tests in …s`
+**Screenshot must show:** the per-module table (10 modules, 102 tests) and `Ran 102 tests in …s`
 followed by `OK`.
 
-**Caption:** *Evidence 5: automated unittest suite — 89 tests across SMTP, POP3, MIME, tiering,
-reference store, concurrency, GUI formatting and stdlib reference clients, all passing.*
+**Caption:** *Evidence 5: automated unittest suite — 102 tests across SMTP, POP3, MIME, tiering,
+reference store, concurrency, GUI Open/Save and date formatting, and stdlib reference clients, all passing.*

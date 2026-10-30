@@ -8,7 +8,7 @@ TIER=localmail/client/tiering.py
 # fail loudly if the code moved, instead of pasting the wrong lines into the report
 expect_line() {
     local file="$1" n="$2" text="$3"
-    if [ "$(sed -n "${n}p" "$file")" != "$text" ]; then
+    if [ "$(sed -n "${n}p" "$file" | tr -d '\r')" != "$text" ]; then   # CRLF checkouts on Windows
         echo "error: $file:$n is no longer '$text' - update the ranges in $0" >&2
         exit 1
     fi
@@ -17,11 +17,8 @@ expect_line() {
 versions() {
     "$PY" --version
     local tshark
-    tshark="$(command -v tshark || true)"
-    [ -z "$tshark" ] && [ -x /Applications/Wireshark.app/Contents/MacOS/tshark ] &&
-        tshark=/Applications/Wireshark.app/Contents/MacOS/tshark
-    if [ -n "$tshark" ]; then "$tshark" --version | head -1; else echo "tshark: not installed"; fi
-    sw_vers
+    if tshark="$(find_tshark)"; then "$tshark" --version | head -1; else echo "tshark: not installed"; fi
+    "$PY" -c "import platform; print(platform.platform())"
 }
 
 extracts() {
@@ -40,6 +37,6 @@ extracts() {
     sed -n 23,31p "$TIER"
 }
 
-versions >"$EVID/versions.txt"
-extracts >"$EVID/section_6_3_extracts.txt"
+versions | tr -d '\r' >"$EVID/versions.txt"
+extracts | tr -d '\r' >"$EVID/section_6_3_extracts.txt"
 echo "wrote evidence/versions.txt and evidence/section_6_3_extracts.txt"

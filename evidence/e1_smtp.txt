@@ -1,9 +1,76 @@
 ========================================================================
-EVIDENCE 1 — SMTP command-reply exchange on TCP 2525 (tshark on lo0)
+EVIDENCE 1 — SMTP command-reply exchange on TCP 2525 (tshark on loopback)
 ========================================================================
-tshark not found (PATH or /Applications/Wireshark.app/Contents/MacOS/tshark).
-Install Wireshark: https://www.wireshark.org/download.html  (or: brew install --cask wireshark)
-Capturing on lo0 needs read access to /dev/bpf*. Fix it once, then rerun this script:
-  A) Wireshark .dmg -> run "Install ChmodBPF.pkg" -> log out and back in, or
-  B) sudo dseditgroup -o edit -a "$USER" -t user access_bpf   (group made by ChmodBPF)
-     sudo chgrp access_bpf /dev/bpf* && sudo chmod g+rw /dev/bpf*   (lasts until reboot)
+
+FILE                               SIZE  TIER       DETAIL
+hello.txt                        0.0 KB  inline     
+waiting for the 10s capture to end ...
+
+Follow TCP stream 0 (full text in evidence/e1_smtp_stream.txt):
+
+===================================================================
+Follow: tcp,ascii
+Filter: tcp.stream eq 0
+Node 0: 127.0.0.1:63703
+Node 1: 127.0.0.1:2525
+220 localmail SMTP ready
+
+EHLO localmail-client
+
+250-localmail Hello localmail-client
+
+250-SIZE 26214400
+
+250 OK
+
+MAIL FROM:<suyash@localmail>
+
+250 OK
+
+RCPT TO:<kapish@localmail>
+
+250 OK
+
+DATA
+
+354 End data with <CRLF>.<CRLF>
+
+Content-Type: multipart/mixed;
+ boundary="LocalMail-2c79e3a939b746da8f7a93a4b6d37250"
+MIME-Version: 1.0
+From: suyash@localmail
+To: kapish@localmail
+Subject: Evidence 1 - SMTP on port 2525
+Date: Fri, 30 Oct 2026 21:29:50 +0530
+Message-ID: <179337599078.12044.13520172646902443763@localmail>
+X-Transfer-Mode: inline
+
+--LocalMail-2c79e3a939b746da8f7a93a4b6d37250
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+        ... 1 base64 lines omitted ...
+
+--LocalMail-2c79e3a939b746da8f7a93a4b6d37250
+Content-Type: application/octet-stream
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="hello.txt"
+
+        ... 1 base64 lines omitted ...
+
+--LocalMail-2c79e3a939b746da8f7a93a4b6d37250--
+.
+
+250 Message accepted
+
+QUIT
+
+221 Bye
+
+===================================================================
+
+GUI screenshot: open evidence/e1_smtp.pcapng in Wireshark
+  Analyze -> Decode As... -> + -> Field "TCP port", Value 2525, Current "SMTP" -> OK
+  right-click any packet -> Follow -> TCP Stream

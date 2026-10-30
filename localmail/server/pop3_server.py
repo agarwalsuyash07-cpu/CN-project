@@ -1,7 +1,7 @@
 import socket
 import threading
 
-from ..common.lineio import (CRLFB, LineReader, dot_stuff, log, log_line,
+from ..common.lineio import (REUSE_ADDR, CRLFB, LineReader, dot_stuff, log, log_line,
                              recv_lines, send, send_bytes)
 
 TAG = "POP3"
@@ -154,7 +154,8 @@ class POP3Server:
 
     def start(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        if REUSE_ADDR:
+            self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind((self.cfg["host"], self.cfg["pop3_port"]))
         self.sock.listen(32)
         self.port = self.sock.getsockname()[1]

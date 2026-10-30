@@ -44,7 +44,7 @@ EOF
 
 In a NEW terminal type (one command per line, wait for each reply):
 
-    nc -c localhost 1110
+    $(nc_command) 1110
     USER yashraj
     PASS $(password_of yashraj)
     STAT
@@ -55,13 +55,14 @@ In a NEW terminal type (one command per line, wait for each reply):
 
 Then prove DELE was committed at QUIT - reconnect and expect "+OK 0 0":
 
-    nc -c localhost 1110
+    $(nc_command) 1110
     USER yashraj
     PASS $(password_of yashraj)
     STAT
     QUIT
 
-(-c sends CRLF like a real client; the server also accepts plain "nc" with bare LF.)
+(both send CRLF like a real client; the server also accepts plain "nc" with bare LF.
+ scripts/nc.py stands in for nc on Windows, which ships without one.)
 Stop the servers afterwards: scripts/evidence/stop_servers.sh
 EOF
 }

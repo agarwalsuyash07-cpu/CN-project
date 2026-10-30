@@ -64,10 +64,6 @@ class POP3Client:
         self._cmd("LIST")
         return [(int(p[0]), int(p[1])) for p in (l.split() for l in self._multiline())]
 
-    def uidl(self):
-        self._cmd("UIDL")
-        return [(int(p[0]), p[1]) for p in (l.split() for l in self._multiline())]
-
     def retr(self, n):
         self._cmd("RETR %d" % n)
         chunks = []
@@ -84,12 +80,6 @@ class POP3Client:
 
     def dele(self, n):
         return self._cmd("DELE %d" % n)
-
-    def noop(self):
-        return self._cmd("NOOP")
-
-    def rset(self):
-        return self._cmd("RSET")
 
     def quit(self):
         try:

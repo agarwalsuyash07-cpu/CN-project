@@ -1,13 +1,22 @@
 import logging
+import os
+import sys
 
 CRLF = "\r\n"
 CRLFB = b"\r\n"
 LOG_LIMIT = 120
+# on Windows SO_REUSEADDR lets a second server bind a busy port silently, and Windows
+# needs no flag to rebind after TIME_WAIT, so listeners set it only elsewhere
+REUSE_ADDR = os.name != "nt"
 
 log = logging.getLogger("localmail")
 
 
 def setup_logging(level=logging.INFO):
+    # Windows pipes and files default to the ANSI code page, which cannot print non-ASCII filenames
+    for stream in (sys.stdout, sys.stderr):
+        if stream is not None and stream.encoding.lower() != "utf-8":
+            stream.reconfigure(encoding="utf-8")
     logging.basicConfig(level=level, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
     log.setLevel(level)
 

@@ -60,8 +60,9 @@ def main(argv=None):
                         help="show only [CLIENT] lines; write server lines to LOGFILE "
                              "(default evidence/e4_server.log)")
     args = parser.parse_args(argv)
-    # logging goes to stderr; line-buffer stdout so the two stay in order when piped
-    sys.stdout.reconfigure(line_buffering=True)
+    # logging goes to stderr; line-buffer stdout so the two stay in order when piped,
+    # and force UTF-8 because a Windows pipe defaults to cp1252 (non-ASCII filenames)
+    sys.stdout.reconfigure(line_buffering=True, encoding="utf-8")
     if args.quiet_server:
         quiet_server_logging(args.quiet_server)
     else:

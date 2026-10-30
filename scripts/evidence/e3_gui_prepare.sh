@@ -66,9 +66,9 @@ main() {
 The GUI opens now, already logged in as kapish. Then:
   1. click the mail "Evidence 3 — inline non-ASCII attachment" (TIER inline, ATT 1)
   2. click रिपोर्ट_é.txt in the Attachments list
-  3. click Open -> the file opens in TextEdit
+  3. click Open -> the file opens in the default text editor
   4. click Save -> choose a folder -> the status bar shows "saved to ..."
-  5. screenshot the GUI and TextEdit side by side
+  5. screenshot the GUI and the editor side by side
 Close the GUI when done; stop the servers with scripts/evidence/stop_servers.sh
 EOF
 }

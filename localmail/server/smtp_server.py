@@ -2,7 +2,7 @@ import socket
 import threading
 from email.utils import formatdate
 
-from ..common.lineio import CRLFB, LineReader, log, log_line, recv_lines, send
+from ..common.lineio import REUSE_ADDR, CRLFB, LineReader, log, log_line, recv_lines, send
 
 TAG = "SMTP"
 
@@ -134,7 +134,8 @@ class SMTPServer:
 
     def start(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        if REUSE_ADDR:
+            self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.bind((self.cfg["host"], self.cfg["smtp_port"]))
         self.sock.listen(32)
         self.port = self.sock.getsockname()[1]

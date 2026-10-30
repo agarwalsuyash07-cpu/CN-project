@@ -1,0 +1,18 @@
+21:29:49 [BOOT] SMTP tcp/2525  POP3 tcp/1110  refstore http://127.0.0.1:8000/ref  bound on 127.0.0.1
+21:29:49 [BOOT] domain=localmail users=kapish,suyash,yashraj data=C:\Users\agarw\Downloads\CODES\CN-project\data
+21:29:49 [BOOT] Ctrl-C to stop
+21:29:50 [SMTP] S: 220 localmail SMTP ready
+21:29:50 [SMTP] C: EHLO localmail-client
+21:29:50 [SMTP] S: 250-localmail Hello localmail-client
+21:29:50 [SMTP] S: 250-SIZE 26214400
+21:29:50 [SMTP] S: 250 OK
+21:29:50 [SMTP] C: MAIL FROM:<suyash@localmail>
+21:29:50 [SMTP] S: 250 OK
+21:29:50 [SMTP] C: RCPT TO:<kapish@localmail>
+21:29:50 [SMTP] S: 250 OK
+21:29:50 [SMTP] C: DATA
+21:29:50 [SMTP] S: 354 End data with <CRLF>.<CRLF>
+21:29:50 [SMTP] C: <831 bytes of message data>
+21:29:50 [SMTP] S: 250 Message accepted
+21:29:50 [SMTP] C: QUIT
+21:29:50 [SMTP] S: 221 Bye

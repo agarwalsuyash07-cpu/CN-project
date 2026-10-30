@@ -2,6 +2,16 @@ test_concurrent_delivery_to_different_mailboxes (tests.test_concurrency.TestConc
 test_twenty_threads_into_one_mailbox (tests.test_concurrency.TestConcurrentDelivery.test_twenty_threads_into_one_mailbox) ... ok
 test_rfc2822_date_is_shortened_to_fit_the_column (tests.test_gui.TestInboxDateColumn.test_rfc2822_date_is_shortened_to_fit_the_column) ... ok
 test_unparseable_date_is_shown_as_is (tests.test_gui.TestInboxDateColumn.test_unparseable_date_is_shown_as_is) ... ok
+test_cancelled_save_dialog_writes_nothing (tests.test_gui.TestOpenAndSave.test_cancelled_save_dialog_writes_nothing) ... ok
+test_nothing_to_open_when_the_message_saved_no_file (tests.test_gui.TestOpenAndSave.test_nothing_to_open_when_the_message_saved_no_file) ... ok
+test_open_passes_the_saved_file_to_the_os (tests.test_gui.TestOpenAndSave.test_open_passes_the_saved_file_to_the_os) ... ok
+test_open_without_an_attachment_selected_asks_for_one (tests.test_gui.TestOpenAndSave.test_open_without_an_attachment_selected_asks_for_one) ... ok
+test_save_copies_the_file_to_the_chosen_path (tests.test_gui.TestOpenAndSave.test_save_copies_the_file_to_the_chosen_path) ... ok
+test_macos_uses_open_and_linux_uses_xdg_open (tests.test_gui.TestOpenWithOS.test_macos_uses_open_and_linux_uses_xdg_open) ... ok
+test_windows_uses_startfile (tests.test_gui.TestOpenWithOS.test_windows_uses_startfile) ... ok
+test_missing_streams_are_left_alone (tests.test_lineio.TestConsoleEncoding.test_missing_streams_are_left_alone) ... ok
+test_non_ascii_prints_when_output_is_redirected_on_windows (tests.test_lineio.TestConsoleEncoding.test_non_ascii_prints_when_output_is_redirected_on_windows) ... ok
+test_folded_hash_header_is_unfolded (tests.test_mime.TestHeaderFolding.test_folded_hash_header_is_unfolded) ... ok
 test_ascii_filename_stays_plain (tests.test_mime.TestMIME.test_ascii_filename_stays_plain) ... ok
 test_binary_payload_survives_base64 (tests.test_mime.TestMIME.test_binary_payload_survives_base64) ... ok
 test_body_part_comes_first (tests.test_mime.TestMIME.test_body_part_comes_first) ... ok
@@ -13,6 +23,8 @@ test_non_ascii_filename_and_subject_round_trip (tests.test_mime.TestMIME.test_no
 test_required_top_level_headers (tests.test_mime.TestMIME.test_required_top_level_headers) ... ok
 test_rfc2231_used_for_non_ascii_filename (tests.test_mime.TestMIME.test_rfc2231_used_for_non_ascii_filename) ... ok
 test_wire_format_is_crlf_only (tests.test_mime.TestMIME.test_wire_format_is_crlf_only) ... ok
+test_input_ending_without_quit_still_returns (tests.test_nc.TestNetcatScript.test_input_ending_without_quit_still_returns) ... ok
+test_pop3_session_typed_through_nc (tests.test_nc.TestNetcatScript.test_pop3_session_typed_through_nc) ... ok
 test_bad_password_is_err (tests.test_pop3.TestPOP3Auth.test_bad_password_is_err) ... ok
 test_greeting (tests.test_pop3.TestPOP3Auth.test_greeting) ... ok
 test_pass_exact_string (tests.test_pop3.TestPOP3Auth.test_pass_exact_string) ... ok
@@ -46,6 +58,7 @@ test_malformed_id_is_404 (tests.test_refstore.TestRefStore.test_malformed_id_is_
 test_missing_id_is_404 (tests.test_refstore.TestRefStore.test_missing_id_is_404) ... ok
 test_non_ascii_filename_header_is_accepted (tests.test_refstore.TestRefStore.test_non_ascii_filename_header_is_accepted) ... ok
 test_put_get_round_trip (tests.test_refstore.TestRefStore.test_put_get_round_trip) ... ok
+test_second_server_on_a_busy_port_fails_to_start (tests.test_smtp.TestPortConflict.test_second_server_on_a_busy_port_fails_to_start) ... ok
 test_ehlo_advertises_the_limit (tests.test_smtp.TestSMTPOversize.test_ehlo_advertises_the_limit) ... ok
 test_oversize_552 (tests.test_smtp.TestSMTPOversize.test_oversize_552) ... ok
 test_bad_sequence_503 (tests.test_smtp.TestSMTPSession.test_bad_sequence_503) ... ok
@@ -89,6 +102,6 @@ test_reference_hash_mismatch_is_not_saved (tests.test_tiering.TestTierTransfers.
 test_reference_mail_has_headers_and_no_attachment_bytes (tests.test_tiering.TestTierTransfers.test_reference_mail_has_headers_and_no_attachment_bytes) ... ok
 
 ----------------------------------------------------------------------
-Ran 89 tests in 36.083s
+Ran 102 tests in 39.002s
 
 OK
